@@ -17,8 +17,7 @@ sub consume {
     my $bytes = $self->encode($data);
     my $destination = '/queue/foo';
     my $headers = undef;
-    warn("SEND $bytes to $destination");
-    $self->connection->connection->send($bytes, $destination, $headers);
+    $self->connection_manager->connection->send($bytes, $destination, $headers);
 }
 
 __PACKAGE__->meta->make_immutable;
