@@ -30,14 +30,14 @@ Message::Passing::Output::STOMP - output messages to STOMP.
 
 =head1 SYNOPSIS
 
-    logstash --input STDIN --output STOMP
+    message-passing --input STDIN --output STOMP
     {"data":{"some":"data"},"@metadata":"value"}
 
 =head1 DESCRIPTION
 
-A L<Message::Passing> L<AnyEvent::RabbitMQ> output class.
+A L<Message::Passing> L<AnyEvent::STOMP> output class.
 
-Can be used as part of a chain of classes with the L<logstash> utility, or directly as
+Can be used as part of a chain of classes with the L<message-passing> utility, or directly as
 a logger in normal perl applications.
 
 =head1 METHODS
@@ -45,6 +45,8 @@ a logger in normal perl applications.
 =head2 consume
 
 Sends a message.
+
+=head2 connected
 
 =head1 SEE ALSO
 

@@ -37,6 +37,14 @@ Message::Passing::Input::STOMP - input messages from a STOMP queue.
 
 =head1 DESCRIPTION
 
+=head1 METHODS
+
+=head2 connected
+
+=head2 destination
+
+To die.
+
 =head1 SEE ALSO
 
 =over
