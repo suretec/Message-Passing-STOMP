@@ -2,7 +2,7 @@ package Message::Passing::STOMP;
 use Moose ();
 use namespace::autoclean;
 
-our $VERSION = "0.001";
+our $VERSION = "0.001_01";
 $VERSION = eval $VERSION;
 
 1;
