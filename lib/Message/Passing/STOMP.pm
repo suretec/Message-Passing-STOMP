@@ -14,16 +14,21 @@ Message::Passing::STOMP - input and output messages to STOMP.
 =head1 SYNOPSIS
 
     # Terminal 1:
-    $ logstash --input STDIN --output STOMP --output_options '{"FIXME"}'
+    $ message-pass --input STDIN --output STOMP --output_options \
+        '{"destination":"/queue/foo","hostname":"localhost","port":"6163","username":"guest","password":"guest"}'
     {"data":{"some":"data"},"@metadata":"value"}
 
     # Terminal 2:
-    $ logstash --output STDOUT --input STOMP --input_options '{"FIXME"}'
+    $ message-pass --output STDOUT --input STOMP --input_options \
+        '{"destination":"/queue/foo","hostname":"localhost","port":"6163","username":"guest","password":"guest"}'
     {"data":{"some":"data"},"@metadata":"value"}
 
 =head1 DESCRIPTION
 
 A L<AnyEvent::STOMP> transport for L<Message::Passing>.
+
+This transport is currently alpha quality. It is known working, however it does not gracefully
+handle errors or disconnects from the stomp server.
 
 =head1 SEE ALSO
 

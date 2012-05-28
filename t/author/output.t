@@ -18,7 +18,9 @@ $stomp->subscribe(
     }
 );
 
-my $output = Message::Passing::Output::STOMP->new();
+my $output = Message::Passing::Output::STOMP->new(
+    destination => '/queue/foo',
+);
 my $cv = AnyEvent->condvar;
 my $timer; $timer = AnyEvent->timer(after => 1, cb => sub { undef $timer; $cv->send });
 $cv->recv;

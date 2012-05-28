@@ -19,6 +19,7 @@ my $output = Message::Passing::Output::Test->new(
 );
 my $input = Message::Passing::Input::STOMP->new(
     output_to => $output,
+    destination => '/queue/foo',
 );
 ok $input;
 

@@ -9,7 +9,11 @@ with qw/
     Message::Passing::Role::Input
 /;
 
-sub destination { '/queue/foo' }
+has destination => (
+    is => 'ro',
+    isa => 'Str',
+    required => 1,
+);
 
 my $id = 0;
 sub connected {

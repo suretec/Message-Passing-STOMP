@@ -7,6 +7,12 @@ with qw/
     Message::Passing::Role::Output
 /;
 
+has destination => (
+    isa => 'Str',
+    is => 'ro',
+    required => 1,
+);
+
 sub connected {
     my $self = shift;
 }
@@ -15,7 +21,7 @@ sub consume {
     my $self = shift;
     my $data = shift;
     my $bytes = $self->encode($data);
-    my $destination = '/queue/foo';
+    my $destination = $self->destination;
     my $headers = undef;
     $self->connection_manager->connection->send($bytes, $destination, $headers);
 }
@@ -29,14 +35,14 @@ Message::Passing::Output::STOMP - output messages to STOMP.
 
 =head1 SYNOPSIS
 
-    message-passing --input STDIN --output STOMP
+    message-pass --input STDIN --output STOMP
     {"data":{"some":"data"},"@metadata":"value"}
 
 =head1 DESCRIPTION
 
 A L<Message::Passing> L<AnyEvent::STOMP> output class.
 
-Can be used as part of a chain of classes with the L<message-passing> utility, or directly as
+Can be used as part of a chain of classes with the L<message-pass> utility, or directly as
 a logger in normal perl applications.
 
 =head1 METHODS

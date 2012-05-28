@@ -1,3 +1,10 @@
+   - Fix input and output to be able to connect to a configureable
+     queue or topic.
+
+   - Fix documentation to be vagely useful
+
+   - Note code is currently alpha quality
+
 0.001_01
     - Initial version for smoking
 
