@@ -1,3 +1,4 @@
+0.002
    - Fix input and output to be able to connect to a configureable
      queue or topic.
 
