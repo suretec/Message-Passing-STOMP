@@ -1,3 +1,7 @@
+   - Fix to use the correct ->_set_connected(0) API in the
+     connection manager, so that upcoming reconnect features
+     work as expected.
+
 0.002
    - Fix input and output to be able to connect to a configureable
      queue or topic.

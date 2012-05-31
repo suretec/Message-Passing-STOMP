@@ -73,12 +73,12 @@ sub _build_connection {
     $client->reg_cb(io_error => sub {
         my ($client, $errmsg) = @_;
         warn("IO ERROR $errmsg");
-        $self->_clear_connection;
+        $self->_set_connected(0);
     });
     $client->reg_cb(connect_error =>  sub {
         my ($client, $errmsg) = @_;
         warn("CONNECT ERROR $errmsg");
-        $self->_clear_connection;
+        $self->_set_connected(0);
     });
     return $client;
 }
