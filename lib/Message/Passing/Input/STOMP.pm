@@ -21,7 +21,7 @@ sub connected {
     weaken($self);
     $client->reg_cb(MESSAGE => sub {
         my (undef, $body, $headers) = @_;
-        $self->output_to->consume($self->decode($body));
+        $self->output_to->consume($body);
     });
     my $subscribe_headers = {
         id => $id++,

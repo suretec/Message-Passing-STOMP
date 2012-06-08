@@ -20,10 +20,9 @@ sub connected {
 sub consume {
     my $self = shift;
     my $data = shift;
-    my $bytes = $self->encode($data);
     my $destination = $self->destination;
     my $headers = undef;
-    $self->connection_manager->connection->send($bytes, $destination, $headers);
+    $self->connection_manager->connection->send($data, $destination, $headers);
 }
 
 __PACKAGE__->meta->make_immutable;

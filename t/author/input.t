@@ -26,7 +26,7 @@ ok $input;
 $cv->recv;
 
 is $output->message_count, 1;
-is_deeply [$output->messages], [{message => "foo"}];
+is_deeply [$output->messages], ['{"message":"foo"}'];
 
 done_testing;
 

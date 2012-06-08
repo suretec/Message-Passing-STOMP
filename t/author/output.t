@@ -24,7 +24,7 @@ my $output = Message::Passing::Output::STOMP->new(
 my $cv = AnyEvent->condvar;
 my $timer; $timer = AnyEvent->timer(after => 1, cb => sub { undef $timer; $cv->send });
 $cv->recv;
-$output->consume({foo => 'bar'});
+$output->consume('{"foo":"bar"}');
 my $frame = $stomp->receive_frame;
 $stomp->ack( { frame => $frame } );
 $stomp->disconnect;

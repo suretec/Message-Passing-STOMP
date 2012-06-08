@@ -1,3 +1,5 @@
+   - Work with changes in Message::Passing 0.006
+
 0.003
    - Fix to use the correct ->_set_connected(0) API in the
      connection manager, so that upcoming reconnect features
