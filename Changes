@@ -1,3 +1,5 @@
+  - Drop dependencies on JSON modules.
+
   - Link to STOMP protocol documentation
 
   - Link to RabbitMQ and ActiveMQ as the recommended queues.

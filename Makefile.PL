@@ -15,8 +15,6 @@ requires 'Moose';
 requires 'namespace::autoclean';
 requires 'AnyEvent';
 requires 'AnyEvent::STOMP' => '0.6';
-requires 'JSON';
-requires 'JSON::XS';
 requires 'Try::Tiny';
 requires 'Task::Weaken';
 requires 'Message::Passing' => '0.006';
@@ -31,6 +29,7 @@ author_requires(
     'Pod::Coverage::TrustPod' => '0',
     'Test::Spelling' => '0',
     'Net::Stomp' => '0',
+    'JSON' => '2.00',
 );
 
 author_tests 't/author';
