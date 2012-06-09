@@ -1,3 +1,10 @@
+  - Link to STOMP protocol documentation
+
+  - Link to RabbitMQ and ActiveMQ as the recommended queues.
+
+  - Document the semantics for STOMP queue names as implemented
+    by RabbitMQ and ActiveMQ.
+
 0.004
    - Work with changes in Message::Passing 0.006
 

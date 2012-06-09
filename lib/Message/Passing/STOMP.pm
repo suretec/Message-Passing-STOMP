@@ -25,14 +25,44 @@ Message::Passing::STOMP - input and output messages to STOMP.
 
 =head1 DESCRIPTION
 
-A L<AnyEvent::STOMP> transport for L<Message::Passing>.
+An L<STOMP|http://stomp.github.com/> transport for L<Message::Passing>.
 
-This transport is currently alpha quality. It is known working, however it does not gracefully
-handle errors or disconnects from the stomp server.
+L<STOMP|http://stomp.github.com/> is a simple and well supported messaging protocol, with clients in
+many languages.
+
+This is a simple adaptor to allow you to send or recieve STOMP messages
+
+=head1 QUEUES AND TOPICS
+
+STOMP does not specify the semantics for message destinations or subscriptions (other than
+that they are a string), however most common STOMP servers (including ActiveMQ and RabbitMQ)
+expect a string matching /queue/name or /topic/name.
+
+Messages published to a destination prefixed by /queue/ are queued up, until a subscriber connects,
+at which point they are delivered. If multiple subscribers connect then the messages are distributed
+between the subscribers (i.e. each subscriber sees a portion of the messages).
+
+Messages published to a destination prefxied by /topic/ are copied to all connected subscribers,
+however if there are no subscribers currently, they are discarded, rather than being queued up.
+
+=head1 STOMP SERVERS
+
+There are a number of message brokers which will communicate with STOMP clients, the main ones
+being:
+
+=head2 RabbitMQ
+
+L<RabbitMQ|http://www.rabbitmq.com/> has L<a STOMP plugin|http://www.rabbitmq.com/stomp.html>.
+
+=head2 ActiveMQ
+
+L<ActiveMQ|http://activemq.apache.org/> has L<a STOMP plugin|http://activemq.apache.org/stomp.html>.
 
 =head1 SEE ALSO
 
 =over
+
+=item L<http://stomp.github.com/> - STOMP protocol documentation
 
 =item L<Message::Passing::Output::STOMP>
 
@@ -41,7 +71,6 @@ handle errors or disconnects from the stomp server.
 =item L<Message::Passing>
 
 =item L<AnyEvent::STOMP>
-
 
 =back
 
