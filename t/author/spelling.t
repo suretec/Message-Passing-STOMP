@@ -4,6 +4,11 @@ use Test::More;
 use Test::Spelling;
 
 add_stopwords(qw(
+    adaptor
+    ActiveMQ
+    RabbitMQ
+    hostname
+    username
     destination
     connected
     SureVoIP

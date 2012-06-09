@@ -39,15 +39,45 @@ __PACKAGE__->meta->make_immutable;
 
 Message::Passing::Input::STOMP - input messages from a STOMP queue.
 
+=head1 SYNOPSIS
+
+    message-pass --output STDOUT --input STOMP --input_options \
+        '{"destination":"/queue/foo","hostname":"localhost","port":"6163","username":"guest","password":"guest"}'
+
 =head1 DESCRIPTION
+
+A simple STOMP subscriber for Message::Passing.
+
+=head1 ATTRIBUTES
+
+=head2 destination
+
+The queue name to subscribe to on the server.
+
+=head2 hostname
+
+Server hostname to connect to.
+
+=head2 port
+
+Server port number to connect to (default 6163).
+
+=head2 username
+
+The username to connect with (defaults to 'guest').
+
+=head2 password
+
+The password to connect with (defaults to 'guest').
 
 =head1 METHODS
 
 =head2 connected
 
-=head2 destination
+Called by L<Message::Passing::STOMP::ConnectionManager> to indicate a
+connection to the STOMP server has been made.
 
-To die.
+Causes the subscription to the topic(s) to be started
 
 =head1 SEE ALSO
 
@@ -59,23 +89,11 @@ To die.
 
 =item L<Message::Passing>
 
-=item L<STOMP>
-
-=item L<http://www.zeromq.org/>
-
 =back
-
-=head1 SPONSORSHIP
-
-This module exists due to the wonderful people at Suretec Systems Ltd.
-<http://www.suretecsystems.com/> who sponsored its development for its
-VoIP division called SureVoIP <http://www.surevoip.co.uk/> for use with
-the SureVoIP API - 
-<http://www.surevoip.co.uk/support/wiki/api_documentation>
 
 =head1 AUTHOR, COPYRIGHT AND LICENSE
 
-See L<Message::Passing>.
+See L<Message::Passing::STOMP>.
 
 =cut
 

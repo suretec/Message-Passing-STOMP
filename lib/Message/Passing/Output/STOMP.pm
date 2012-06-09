@@ -34,15 +34,35 @@ Message::Passing::Output::STOMP - output messages to STOMP.
 
 =head1 SYNOPSIS
 
-    message-pass --input STDIN --output STOMP
+    message-pass --input STDIN --output STOMP --output_options \
+        '{"destination":"/queue/foo","hostname":"localhost","port":"6163","username":"guest","password":"guest"}'
     {"data":{"some":"data"},"@metadata":"value"}
 
 =head1 DESCRIPTION
 
 A L<Message::Passing> L<AnyEvent::STOMP> output class.
 
-Can be used as part of a chain of classes with the L<message-pass> utility, or directly as
-a logger in normal perl applications.
+=head1 ATTRIBUTES
+
+=head2 destination
+
+The queue name to subscribe to on the server.
+
+=head2 hostname
+
+Server hostname to connect to.
+
+=head2 port
+
+Server port number to connect to (default 6163).
+
+=head2 username
+
+The username to connect with (defaults to 'guest').
+
+=head2 password
+
+The password to connect with (defaults to 'guest').
 
 =head1 METHODS
 
@@ -51,6 +71,9 @@ a logger in normal perl applications.
 Sends a message.
 
 =head2 connected
+
+Called by L<Message::Passing::STOMP::ConnectionManager> to indicate a
+connection to the STOMP server has been made.
 
 =head1 SEE ALSO
 
@@ -64,21 +87,11 @@ Sends a message.
 
 =item L<STOMP>
 
-=item L<http://www.zeromq.org/>
-
 =back
-
-=head1 SPONSORSHIP
-
-This module exists due to the wonderful people at Suretec Systems Ltd.
-<http://www.suretecsystems.com/> who sponsored its development for its
-VoIP division called SureVoIP <http://www.surevoip.co.uk/> for use with
-the SureVoIP API - 
-<http://www.surevoip.co.uk/support/wiki/api_documentation>
 
 =head1 AUTHOR, COPYRIGHT AND LICENSE
 
-See L<Message::Passing>.
+See L<Message::Passing::STOMP>.
 
 =cut
 

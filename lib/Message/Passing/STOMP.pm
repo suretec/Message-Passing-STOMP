@@ -30,7 +30,7 @@ An L<STOMP|http://stomp.github.com/> transport for L<Message::Passing>.
 L<STOMP|http://stomp.github.com/> is a simple and well supported messaging protocol, with clients in
 many languages.
 
-This is a simple adaptor to allow you to send or recieve STOMP messages
+This is a simple adaptor to allow you to send or receive STOMP messages
 
 =head1 QUEUES AND TOPICS
 
@@ -42,7 +42,7 @@ Messages published to a destination prefixed by /queue/ are queued up, until a s
 at which point they are delivered. If multiple subscribers connect then the messages are distributed
 between the subscribers (i.e. each subscriber sees a portion of the messages).
 
-Messages published to a destination prefxied by /topic/ are copied to all connected subscribers,
+Messages published to a destination prefixed by /topic/ are copied to all connected subscribers,
 however if there are no subscribers currently, they are discarded, rather than being queued up.
 
 =head1 STOMP SERVERS
