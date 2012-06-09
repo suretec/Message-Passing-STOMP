@@ -1,3 +1,4 @@
+0.005
   - Better documentation in the Input and Output classes.
 
   - Drop dependencies on JSON modules.
