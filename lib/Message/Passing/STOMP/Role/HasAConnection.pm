@@ -22,7 +22,7 @@ has [qw/ username password /] => (
 );
 
 sub _connection_manager_class { 'Message::Passing::STOMP::ConnectionManager' }
-sub _connection_manager_attributes { [qw/ username password ssl hostname /] }
+sub _connection_manager_attributes { [qw/ username password ssl hostname port /] }
 
 1;
 
