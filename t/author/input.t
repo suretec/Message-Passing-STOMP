@@ -20,6 +20,7 @@ my $output = Message::Passing::Output::Test->new(
 my $input = Message::Passing::Input::STOMP->new(
     output_to => $output,
     destination => '/queue/foo',
+    hostname => '127.0.0.1',
 );
 ok $input;
 

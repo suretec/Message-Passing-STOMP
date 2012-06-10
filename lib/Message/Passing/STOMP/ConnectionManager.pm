@@ -27,19 +27,12 @@ BEGIN { # For RabbitMQ https://rt.cpan.org/Ticket/Display.html?id=68432
     }
 }
 
-with 'Message::Passing::Role::ConnectionManager';
+with qw/
+    Message::Passing::Role::ConnectionManager
+    Message::Passing::Role::HasHostnameAndPort
+/;
 
-has hostname => (
-    is => 'ro',
-    isa => 'Str',
-    default => 'localhost',
-);
-
-has port => (
-    is => 'ro',
-    isa => 'Int',
-    default => 6163,
-);
+sub _default_port { 6163 }
 
 has ssl => (
     is => 'ro',

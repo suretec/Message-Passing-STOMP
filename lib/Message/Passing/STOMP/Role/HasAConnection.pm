@@ -1,18 +1,14 @@
 package Message::Passing::STOMP::Role::HasAConnection;
 use Moose::Role;
+use Message::Passing::STOMP::ConnectionManager;
 use namespace::autoclean;
 
-has hostname => (
-    is => 'ro',
-    isa => 'Str',
-    default => 'localhost',
-);
+with qw/
+    Message::Passing::Role::HasAConnection
+    Message::Passing::Role::HasHostnameAndPort
+/;
 
-has port => (
-    is => 'ro',
-    isa => 'Int',
-    default => 6163,
-);
+sub _default_port { 6163 }
 
 has ssl => (
     is => 'ro',
@@ -26,8 +22,6 @@ has [qw/ username password /] => (
     default => 'guest',
 );
 
-with 'Message::Passing::Role::HasAConnection';
-use Message::Passing::STOMP::ConnectionManager;
 sub _build_connection_manager {
     my $self = shift;
     Message::Passing::STOMP::ConnectionManager->new(map { $_ => $self->$_() }

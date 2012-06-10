@@ -20,6 +20,7 @@ $stomp->subscribe(
 
 my $output = Message::Passing::Output::STOMP->new(
     destination => '/queue/foo',
+    hostname => '127.0.0.1',
 );
 my $cv = AnyEvent->condvar;
 my $timer; $timer = AnyEvent->timer(after => 1, cb => sub { undef $timer; $cv->send });

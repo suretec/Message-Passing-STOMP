@@ -1,3 +1,5 @@
+  - Internal refactoring to use roles common to other components.
+
   - Support subscribing to multiple queues or topics with a single
     Message::Passing::Input::STOMP
 
