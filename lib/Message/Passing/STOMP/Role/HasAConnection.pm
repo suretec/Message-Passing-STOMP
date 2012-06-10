@@ -1,6 +1,5 @@
 package Message::Passing::STOMP::Role::HasAConnection;
 use Moose::Role;
-use Message::Passing::STOMP::ConnectionManager;
 use namespace::autoclean;
 
 with qw/
@@ -22,12 +21,8 @@ has [qw/ username password /] => (
     default => 'guest',
 );
 
-sub _build_connection_manager {
-    my $self = shift;
-    Message::Passing::STOMP::ConnectionManager->new(map { $_ => $self->$_() }
-        qw/ username password ssl hostname /
-    );
-}
+sub _connection_manager_class { 'Message::Passing::STOMP::ConnectionManager' }
+sub _connection_manager_attributes { [qw/ username password ssl hostname /] }
 
 1;
 
