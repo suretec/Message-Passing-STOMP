@@ -1,3 +1,6 @@
+  - Support subscribing to multiple queues or topics with a single
+    Message::Passing::Input::STOMP
+
 0.005
   - Better documentation in the Input and Output classes.
 

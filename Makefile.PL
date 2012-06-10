@@ -17,7 +17,7 @@ requires 'AnyEvent';
 requires 'AnyEvent::STOMP' => '0.6';
 requires 'Try::Tiny';
 requires 'Task::Weaken';
-requires 'Message::Passing' => '0.006';
+requires 'Message::Passing' => '0.008';
 
 test_requires 'Test::More' => '0.88';
 

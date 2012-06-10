@@ -2,6 +2,7 @@ package Message::Passing::Input::STOMP;
 use Moose;
 use AnyEvent;
 use Scalar::Util qw/ weaken /;
+use Message::Passing::Types qw/ ArrayOfStr /;
 use namespace::autoclean;
 
 with qw/
@@ -11,7 +12,8 @@ with qw/
 
 has destination => (
     is => 'ro',
-    isa => 'Str',
+    isa => ArrayOfStr,
+    coerce => 1,
     required => 1,
 );
 
@@ -23,13 +25,15 @@ sub connected {
         my (undef, $body, $headers) = @_;
         $self->output_to->consume($body);
     });
-    my $subscribe_headers = {
-        id => $id++,
-        destination => $self->destination,
-        ack => 'auto',
-    };
-    $client->send_frame('SUBSCRIBE',
-        undef, $subscribe_headers);
+    foreach my $destination (@{ $self->destination }) {
+        my $subscribe_headers = {
+            id => $id++,
+            destination => $destination,
+            ack => 'auto',
+        };
+        $client->send_frame('SUBSCRIBE',
+            undef, $subscribe_headers);
+    }
 }
 
 __PACKAGE__->meta->make_immutable;
@@ -52,7 +56,9 @@ A simple STOMP subscriber for Message::Passing.
 
 =head2 destination
 
-The queue name to subscribe to on the server.
+The queue or topic name to subscribe to on the server.
+
+This can either be a single value, or an array of values.
 
 =head2 hostname
 
