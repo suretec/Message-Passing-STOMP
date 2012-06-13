@@ -1,3 +1,4 @@
+0.006
   - Fix checking AnyEvent::STOMP version to be done in a way PAUSE
     hopefully won't object to.
 
