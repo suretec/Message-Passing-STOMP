@@ -6,7 +6,7 @@ use Module::Install::Authority;
 all_from 'lib/Message/Passing/STOMP.pm';
 
 license 'AGPL_3';
-authority('GHENRY');
+authority('cpan:GHENRY');
 resources(
     repository => "git://github.com/suretec/Message-Passing-STOMP.git",
 );
