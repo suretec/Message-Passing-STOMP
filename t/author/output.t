@@ -9,7 +9,7 @@ use Message::Passing::Output::STOMP;
 use JSON;
 
 use Net::Stomp;
-my $stomp = Net::Stomp->new( { hostname => 'localhost', port => '6163' } );
+my $stomp = Net::Stomp->new( { hostname => 'localhost', port => '61613' } );
 $stomp->connect( { login => 'guest', passcode => 'guest' } );
 $stomp->subscribe(
     {   destination             => '/queue/foo',
@@ -21,6 +21,7 @@ $stomp->subscribe(
 my $output = Message::Passing::Output::STOMP->new(
     destination => '/queue/foo',
     hostname => '127.0.0.1',
+    port     => 61613,
 );
 my $cv = AnyEvent->condvar;
 my $timer; $timer = AnyEvent->timer(after => 1, cb => sub { undef $timer; $cv->send });

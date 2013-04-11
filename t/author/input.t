@@ -3,7 +3,7 @@ use warnings;
 use Test::More;
 
 use Net::Stomp;
-my $stomp = Net::Stomp->new( { hostname => 'localhost', port => '6163' } );
+my $stomp = Net::Stomp->new( { hostname => 'localhost', port => '61613' } );
 $stomp->connect( { login => 'guest', passcode => 'guest' } );
 $stomp->send(
     { destination => '/queue/foo', body => '{"message":"foo"}' } );
@@ -21,6 +21,7 @@ my $input = Message::Passing::Input::STOMP->new(
     output_to => $output,
     destination => '/queue/foo',
     hostname => '127.0.0.1',
+    port => 61613,
 );
 ok $input;
 
