@@ -1,7 +1,8 @@
 package Message::Passing::Input::STOMP;
 use Moose;
 use AnyEvent;
-use MooseX::Types::Moose qw/ ArrayRef /;
+use MooseX::Types::Moose qw/ ArrayRef Str /;
+use Moose::Util::TypeConstraints;
 use Scalar::Util qw/ weaken /;
 use namespace::autoclean;
 
@@ -10,9 +11,13 @@ with qw/
     Message::Passing::Role::Input
 /;
 
+my $a = subtype ArrayRef;
+coerce $a, from Str, via { [ $_ ] };
+
 has destination => (
     is => 'ro',
-    isa => ArrayRef,
+    isa => $a,
+    coerce => 1,
     default => sub { [] },
     required => 1,
 );
