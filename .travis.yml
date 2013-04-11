@@ -1,5 +1,6 @@
 ---
 before_install:
+  - sudo rabbitmq-plugins enable stomp
   - sudo apt-get install aspell
   - cpanm Module::Install
   - cpanm Module::Install::AuthorRequires
