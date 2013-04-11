@@ -1,7 +1,7 @@
 package Message::Passing::Input::STOMP;
 use Moose;
 use AnyEvent;
-use MooseX::Types qw/ ArrayRef /;
+use MooseX::Types::Moose qw/ ArrayRef /;
 use Scalar::Util qw/ weaken /;
 use namespace::autoclean;
 
@@ -13,8 +13,7 @@ with qw/
 has destination => (
     is => 'ro',
     isa => ArrayRef,
-    default => [],
-    coerce => 1,
+    default => sub { [] },
     required => 1,
 );
 
