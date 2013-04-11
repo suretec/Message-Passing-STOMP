@@ -12,6 +12,7 @@ resources(
 );
 
 requires 'Moose';
+requires 'MooseX::Types';
 requires 'namespace::autoclean';
 requires 'AnyEvent';
 requires 'AnyEvent::STOMP' => '0.6';
