@@ -1,5 +1,9 @@
 ---
+services:
+  - rabbitmq
 before_install:
+#  - wget http://www.rabbitmq.com/releases/rabbitmq-server/v3.0.4/rabbitmq-server_3.0.4-1_all.deb
+#  - sudo dpkg -i rabbitmq-server_3.0.4-1_all.deb
   - sudo rabbitmq-plugins list
   - sudo rabbitmq-plugins enable stomp
   - sudo apt-get install aspell
